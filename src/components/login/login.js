@@ -22,10 +22,10 @@ class Login extends Component {
     const { history } = this.props
     const body = this.state
     const res = await axios.post(`users/login`, body)
-    // console.log(res);
     
-    const { meta, data } = res.data
+    const { meta, data } = res
     if (meta.status === 200) {
+      localStorage.setItem('token',data.token)
       history.push('/')
     } else {
       Toast.fail(meta.msg, 1)
@@ -34,8 +34,8 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="flex-container" justify="conter">
-        <Flex direction="column">
+      <div className="flex-container">
+        <Flex direction="column" justify="center">
           <Flex.Item>
             <WingBlank size="sm">
               <NavBar mode="dark">登录</NavBar>
@@ -47,7 +47,9 @@ class Login extends Component {
               <WingBlank size="sm">
                 <InputItem value={this.state.uname} onChange={v=>{
                   this.changeValue('uname',v)
-                }} placeholder="请输入用户名" type="text">用户名</InputItem>
+                }} placeholder="请输入用户名" type="text">
+                  <div style={{ backgroundImage: 'url(https://zos.alipayobjects.com/rmsportal/DfkJHaJGgMghpXdqNaKF.png)', backgroundSize: 'cover', height: '22px', width: '22px' }} />
+                </InputItem>
                 <InputItem value={this.state.pwd} onChange={v=>{
                   this.changeValue('pwd',v)
                 }} placeholder="请输入密码" type="password">密码</InputItem>

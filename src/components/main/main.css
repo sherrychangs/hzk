@@ -1,0 +1,12 @@
+.am-card-header-content img{
+  width: 120px;
+  height: 95px;
+}
+.am-card-header {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 9px 15px;
+}
