@@ -48,8 +48,32 @@ class Main extends Component {
     }
     return arrNew
   }
-  handleMenu = () => {
-    
+  handleDetail = (el) => {
+    // console.log(this.props);
+    const { id, text } = el
+    const {history} = this.props.props
+    switch (id) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        history.push('/detail',{query:{params:{id:id,text:text}}})
+        break;
+      case 5:
+        history.push('/map')
+        break;
+      case 6:
+        console.log(text);      
+        break;
+      case 7:
+        history.push('/cal', { query: { params: { id: id, text: text } } })
+        break;
+      case 8:
+        // history.push('/detail')
+        console.log(text);      
+        
+        break;
+    }
   }
   componentDidMount = async () => {
     const result = await Promise.all([
@@ -60,7 +84,7 @@ class Main extends Component {
       this.getData(`homes/house`),
       this.getData(`homes/list`)
     ])
-    console.log(result);
+    // console.log(result);
     this.setState({
       list: result[0],
       menu: result[1],
@@ -69,6 +93,7 @@ class Main extends Component {
       homes: result[4],    
     }, () => {
       const data = this.state.menu.map((item, i) => ({
+        id:i+1,
         icon: `http://127.0.0.1:8086/public/0${i + 1}.png`,
         text: item.menu_name,
       }));
@@ -146,8 +171,8 @@ class Main extends Component {
           {/* 轮播图   */}
           <Carousel autoplay={true} infinite>{CarouselTemplate}</Carousel>
           {/* 菜单宫格 */}
-          <Grid data={this.state.data} isCarousel onClick={() => {
-            this.handleMenu()
+          <Grid data={this.state.data} isCarousel onClick={(el) => {
+            this.handleDetail(el)
           }} />
           <WhiteSpace size="sm" />
           {/* 好客资讯 */}

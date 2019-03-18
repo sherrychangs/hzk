@@ -16,7 +16,7 @@ class Home extends Component {
   }
   renderContent(pageText) {
     if (pageText === 'Main') {
-      return <Main /> 
+      return <Main props={this.props}/> 
     } else if (pageText === 'News') {
       return <News />
     } else if (pageText === 'Chat') {

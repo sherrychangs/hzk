@@ -1,0 +1,18 @@
+.am-list-line{
+  width: 86px;
+  height: 28px;
+  border: 1px solid #ccc;
+  vertical-align: top;
+  border-radius: 5px;
+  /* margin-top: 10px; */
+}
+.am-list-item.am-input-item {
+  height: 28px;
+  padding-left: 0;
+}
+.am-list-item .am-input-control input {
+  padding-left: 10px;
+}
+.am-list-item{
+  min-height: 0;
+}
